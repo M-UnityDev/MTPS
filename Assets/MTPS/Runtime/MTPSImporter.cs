@@ -16,6 +16,10 @@ namespace MTPS
         [SerializeField]
         private string[] Scenes;
 
+        [Tooltip("Search prefabs for TextPack Clients to import keys from them")]
+        [SerializeField]
+        private GameObject[] Prefabs;
+
         [Tooltip("Import keys from JSON files")]
         [SerializeField]
         private TextAsset[] Jsons;
@@ -39,6 +43,10 @@ namespace MTPS
             foreach (string Scene in Scenes)
             {
                 SceneManager.LoadScene(Scene, LoadSceneMode.Additive);
+            }
+            foreach (GameObject prefab in Prefabs)
+            {
+                Instantiate(prefab);
             }
             foreach (TextAsset Json in Jsons)
             {
@@ -65,6 +73,15 @@ namespace MTPS
             )
                 if (!keys.Contains(text.Key))
                     keys.Add(text.Key);
+            foreach (
+                ITextPackCustomClient text in FindObjectsByType<MonoBehaviour>(
+                        FindObjectsInactive.Exclude,
+                        FindObjectsSortMode.None
+                    )
+                    .OfType<ITextPackCustomClient>()
+                    .ToArray()
+            )
+                keys.AddRange(text.GetKeys());
             keys.AddRange(ExplicitKeys.ToList());
             keys = keys.Distinct().ToList();
             foreach (string key in keys)
@@ -73,6 +90,9 @@ namespace MTPS
             string filePath = Path.Combine(Application.dataPath, "Template.json");
             File.WriteAllText(filePath, jsonstring);
             Debug.LogWarning("JSON file saved to: " + filePath);
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.ExitPlaymode();
+#endif
         }
     }
 }
