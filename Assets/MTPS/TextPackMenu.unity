@@ -173,18 +173,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88186753}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ee315b271bf3d659d8c0e326a382f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: MUnity.MTPS::MUnity.MTPS.MTPSHelper
   Scenes: []
+  Prefabs: []
   Jsons:
   - {fileID: 4900000, guid: bd7edbba21806ca87b2e35e0cf3b83c0, type: 3}
   DelayInSeconds: 1
   ExplicitKeys:
   - eeerwe
   - reerrthyt
+  DuplicateKeysForValues: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,6 +609,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4311477730106062036, guid: 37a0b9c651b3eaeafa97559bdeaeae23, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311477730106062036, guid: 37a0b9c651b3eaeafa97559bdeaeae23, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7790839756361557060, guid: 37a0b9c651b3eaeafa97559bdeaeae23, type: 3}
