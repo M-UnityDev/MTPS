@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CustomTextPackClient : MonoBehaviour, ITextPackCustomClient
+public class CustomTextPackClient : MonoBehaviour, ITextPackClient
 {
     [SerializeField]
     private string Key1;
@@ -12,5 +12,10 @@ public class CustomTextPackClient : MonoBehaviour, ITextPackCustomClient
     {
         string[] strings = { Key1, Key2 };
         return strings;
+    }
+
+    public void TextPackUpdate()
+    {
+        print(Key1);
     }
 }
